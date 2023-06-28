@@ -8,7 +8,7 @@ const route = require("./routes");
 const db = require("./config/db");
 
 
-
+// chuot bach
 app.use(express.static(path.join(__dirname, "public")));
 app.engine('.hbs', handlebars.engine({extname: '.hbs'}));
 app.set('view engine', 'hbs');
