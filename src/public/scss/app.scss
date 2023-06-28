@@ -1,0 +1,42 @@
+.content{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.card{
+    position: relative;
+    transition: transform .2s;
+   &:hover{
+       transform: scale(1.05);
+       box-shadow: 1px 1px 5px #b6b6b6;
+   }
+
+   .card-img-top{
+    cursor: pointer;
+   }
+
+   .card-title{
+    display: inline;
+    cursor: pointer;
+
+   }
+}
+
+.card-text{
+    min-height: 144px;
+    max-height: 144px;
+    overflow: hidden;
+}
+
+.card-img-top{
+    max-height: 160px;
+}
+
+.show-device-img{
+    width: 80%;
+}
+.show-device-info{
+    width: 20%;
+    word-wrap:break-word;
+}
