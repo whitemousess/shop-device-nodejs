@@ -1,9 +1,12 @@
 <div class="mt-4">
-  <div class="title"><h2>{{device.type}} {{device.name}}</h2></device></div>
+  <div class="title text-center"><h2>{{device.type}} {{device.name}}</h2></device></div>
   
   <div class="d-flex">
-    <img src="{{device.image}}" alt="" class="border show-device-img"/>
+    <img src="/images/{{device.image}}" alt="" class="border show-device-img"/>
     <div class="col-sm-3 show-device-info"><p
       >{{device.description}}</p></div>
   </div>
+  <div class="info-product">
+    {{device.infoProduct}}
+  </div>  
 </div>

@@ -1,39 +1,58 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/auth.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="container">
-        <header class="header">Đăng nhập</header>
-        <p class="title">Tài khoản</p>
-        <div class="form-group">
-          <input
-            type="email"
-            class="input-login"
-            placeholder="Tài khoản"
-            required
-          />
-        </div>
-        <p class="title">Mật khẩu</p>
-        <div class="form-group">
-          <input
-            class="input-login"
-            id="Password"
-            placeholder="Password"
-            required
-          />
-        </div>
-        <button class="btn-login primary">
-          Đăng nhập
-        </button>
-        <span class="btn-register">
-          <a href="/auth/register"><button>Chưa có tài khoản?</button></a>
-        </span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/auth.css" />
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <header class="header">Đăng nhập</header>
+      <p class="title">Tài khoản</p>
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Tài khoản" id="username" />
       </div>
+      <p class="title">Mật khẩu</p>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" id="password" />
+      </div>
+      <button onclick="login()" class="btn-login primary">
+        Đăng nhập
+      </button>
+      <span class="btn-register">
+        <a href="/auth/register"><button>Chưa có tài khoản?</button></a>
+      </span>
     </div>
-  </body>
+  </div>
+</body>
+
+<script>
+  function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000)); let expires =
+      "expires=" + d.toUTCString(); document.cookie = cname + "=" + cvalue + ";" +
+        expires + ";path=/";
+  } function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie); let ca =
+      decodedCookie.split(';'); for (let i = 0; i < ca.length; i++) {
+        let c =
+          ca[i]; while (c.charAt(0) == ' ') { c = c.substring(1); } if
+          (c.indexOf(name) == 0) { return c.substring(name.length, c.length); }
+      }
+    return "";
+  } function login() {
+    $.ajax({
+      url: "/auth/login", type: "POST",
+      data: { username: $("#username").val(), password: $("#password").val(), },
+    }).then((data) => {
+      setCookie('token', data.token, 1), window.location = "/"
+    }).catch((error) => console.log(error));
+  }
+</script>
+
 </html>

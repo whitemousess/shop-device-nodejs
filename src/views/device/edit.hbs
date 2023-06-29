@@ -1,0 +1,46 @@
+<div class="mt-4 text-center"><h1>Cập nhật thiết bị</h1></div>
+
+<form method="post" action="/device/{{device._id}}/edit?_method=PUT">
+  <div class="form-group container">
+    <label class="mt-4">Example file input</label>
+    <input
+      type="file"
+      name="image"
+      value="{{device.image}}"
+      class="form-control"
+      required
+    />
+    <label class="mt-4">Tên thiết bị</label>
+    <input
+      type="text"
+      name="name"
+      value="{{device.name}}"
+      class="form-control"
+      placeholder="Tên thiết bị ..."
+    />
+    <label class="mt-4">Mô tả thiết bị</label>
+    <input
+      type="text"
+      name="description"
+      value="{{device.description}}"
+      class="form-control"
+      placeholder="Mô tả thiết bị ..."
+    />
+    <label class="mt-4">Thông tin sản phẩm</label>
+    <textarea
+      type="text"
+      name="infoProduct"
+      class="form-control"
+      placeholder="Thông tin sản phẩm ..."
+    >{{device.infoProduct}}</textarea>
+    <label class="mt-4">Loại thiết bị</label>
+    <input
+      type="text"
+      name="type"
+      value="{{device.type}}"
+      class="form-control"
+      placeholder="Loại thiết bị ..."
+    />
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+  </div>
+</form>

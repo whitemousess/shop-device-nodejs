@@ -7,51 +7,58 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="container">
-        <header class="header">Đăng ký</header>
-        <p class="title">Tài khoản</p>
-        <div class="form-group">
-          <input
-            type="email"
-            class="input-login"
-            placeholder="Tài khoản ..."
-            required
-          />
+      <form method="post">
+        <div class="container">
+          <header class="header">Đăng ký</header>
+          <p class="title">Tài khoản</p>
+          <div class="form-group">
+            <input
+              type="text"
+              name="username"
+              class="input-login"
+              placeholder="Tài khoản ..."
+              required
+            />
+          </div>
+          <p class="title">Mật khẩu</p>
+          <div class="form-group">
+            <input
+            type="password"
+              class="input-login"
+              name="password"
+              id="Password"
+              placeholder="Nhập mật khẩu ..."
+              required
+            />
+          </div>
+          <p class="title">Nhập lại mật khẩu</p>
+          <div class="form-group">
+            <input
+            type="password"
+              class="input-login"
+              id="Password"
+              placeholder="Nhập lại mật khẩu ..."
+              required
+            />
+          </div>
+          <p class="title">Email</p>
+          <div class="form-group">
+            <input
+              type="email"              
+              name="email"
+              class="input-login"
+              placeholder="Email ..."
+              required
+            />
+          </div>
+          <button class="btn-login primary">
+            Đăng ký
+          </button>
+          <span class="btn-register">
+            <a href="/auth/login"><button>Đã có tài khoản . Đăng nhập</button></a>
+          </span>
         </div>
-        <p class="title">Mật khẩu</p>
-        <div class="form-group">
-          <input
-            class="input-login"
-            id="Password"
-            placeholder="Nhập mật khẩu ..."
-            required
-          />
-        </div>
-        <p class="title">Nhập lại mật khẩu</p>
-        <div class="form-group">
-          <input
-            class="input-login"
-            id="Password"
-            placeholder="Nhập lại mật khẩu ..."
-            required
-          />
-        </div>
-        <p class="title">Email</p>
-        <div class="form-group">
-          <input
-            type="email"
-            class="input-login"
-            placeholder="Email ..."
-            required
-          />
-        </div>
-        <button class="btn-login primary">
-          Đăng ký
-        </button>
-        <span class="btn-register">
-          <a href="/auth/login"><button>Đã có tài khoản . Đăng nhập</button></a>
-        </span>
-      </div>
+      </form>
     </div>
   </body>
 </html>

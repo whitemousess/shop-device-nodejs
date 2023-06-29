@@ -1,15 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+<nav class="navbar-expand-lg navbar-light bg-light border">
+  <div class="collapse navbar-collapse container" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="/">Home
-          <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
       </li>
     </ul>
-    <div class="form-inline">
+    <div class="form-inline auth">
       <a href="/auth/login">
         <button class="btn btn-success my-2 my-sm-0" type="submit">Đăng nhập</button>
       </a>
@@ -20,5 +16,56 @@
         >Đăng ký</button>
       </a>
     </div>
+     <div class="isLogin nav-item dropdown">
+        <a id="navbarDropdown" role="button" data-toggle="dropdown">
+         <img src="/images/avatar.png" alt="avatar" class="user-avatar">
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/device/create">Thêm sản phẩm</a>
+          <a class="dropdown-item" href="/device/manager">Quản lý sản phẩm</a>
+          <a class="dropdown-item" href="/" onclick="logout()">Đăng xuất</a>
+        </div>
+      </div>
   </div>
 </nav>
+
+
+<script>
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+  function logout() {
+      setCookie('token', "" , 0)
+  }
+
+  let isLogin = document.querySelector(".isLogin")
+  let isLogout = document.querySelector(".auth")
+  let user = getCookie("token");
+  if (user != "") {
+    isLogin.classList.add("d-block")
+    isLogout.classList.add("d-none")
+  } else {
+    isLogin.classList.add("d-none")
+    isLogout.classList.add("d-block")
+  }
+</script>
