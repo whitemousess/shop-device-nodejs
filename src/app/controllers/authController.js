@@ -17,6 +17,16 @@ class authController {
     res.render("auth/register", { layout: null });
   }
 
+  // info user
+  authentication(req, res, next) {
+    var token = req.cookies.token;
+    var ketqua = jwt.verify(token, "device");
+    accountModel
+      .findOne({_id: ketqua._id})
+      .then((account) => res.json( account ))
+      .catch(next);
+  }
+
   // handle events
   login(req, res, next) {
     const { username, password } = req.body;
@@ -38,7 +48,7 @@ class authController {
   }
 
   register(req, res, next) {
-    req.body.role = 1
+    req.body.role = 1;
     const account = new accountModel(req.body);
     account
       .save()

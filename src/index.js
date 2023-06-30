@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // helpers
 app.engine(
   ".hbs",
-  handlebars.engine({
+  handlebars({
     extname: ".hbs",
     helpers: {
       sum: (a, b) => a + b,

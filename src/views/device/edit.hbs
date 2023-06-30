@@ -1,12 +1,11 @@
 <div class="mt-4 text-center"><h1>Cập nhật thiết bị</h1></div>
 
-<form method="post" action="/device/{{device._id}}/edit?_method=PUT">
+<form method="post" action="/device/{{device._id}}/edit?_method=PUT" enctype="multipart/form-data">
   <div class="form-group container">
     <label class="mt-4">Example file input</label>
     <input
       type="file"
       name="image"
-      value="{{device.image}}"
       class="form-control"
       required
     />

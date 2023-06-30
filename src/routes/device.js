@@ -15,11 +15,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage})
 
-router.get('/manager',deviceController.storedProduct)
+router.get('/manager',checkLogin,deviceController.storedProduct)
+router.get('/manager/trash',checkLogin,deviceController.trashProduct)
 router.get('/create',checkLogin, deviceController.viewCreate)
 router.post('/create',upload.single('image'), deviceController.create)
-router.get('/:id/edit',deviceController.viewEdit)
-router.put('/:id/edit',deviceController.update)
+router.get('/:id/edit',checkLogin,deviceController.viewEdit)
+router.put('/:id/edit',upload.single('image'),deviceController.update)
+router.delete('/:id/delete',deviceController.destroy)
+router.delete('/:id/delete/force',deviceController.destroyForce)
+router.patch('/:id/restore',deviceController.restore)
 
 router.get('/:slug',deviceController.getIphone)
 

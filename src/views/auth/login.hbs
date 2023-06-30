@@ -50,7 +50,14 @@
       url: "/auth/login", type: "POST",
       data: { username: $("#username").val(), password: $("#password").val(), },
     }).then((data) => {
-      setCookie('token', data.token, 1), window.location = "/"
+      // check login
+      if(data.token == undefined){
+        setCookie('token', "", 0),
+        $("#username").addClass("input-danger")
+        $("#password").addClass("input-danger")
+      }else{
+        setCookie('token', data.token, 1), window.location = "/"
+      }
     }).catch((error) => console.log(error));
   }
 </script>
