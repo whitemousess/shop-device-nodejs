@@ -7,7 +7,7 @@ function route(app) {
   app.use('/device',deviceRouter);
   app.use('/auth', authRouter);
   app.use('/',siteRouter);
-
+  app.use('/', function(req, res, next){res.render('handleError/error404' , {layout: null})})
 }
 
 module.exports = route;
